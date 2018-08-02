@@ -6,7 +6,22 @@
 # https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+import logging
+# 设置代理中间件
+class ProxyMiddleware(object):
+    logger=logging.getLogger(__name__)
+    def process_request(self,request, spider):
+        self.logger.debug('use proxy')
+        request.meta['proxy']=''# 代理地址
+    
+    def process_response(self,request, response, spider):
+        response.status=201
+        return response
+    
+    def process_exception(self,request, exception, spider):
+        pass
 
+    
 
 class HelloSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,

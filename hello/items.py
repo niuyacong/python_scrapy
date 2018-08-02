@@ -14,3 +14,9 @@ class HelloItem(scrapy.Item):
     text=scrapy.Field()
     author=scrapy.Field()
     tags=scrapy.Field() 
+
+
+class UserItem(scrapy.Item):
+    avatar_url=scrapy.Field()
+    url_token=scrapy.Field()
+    name=scrapy.Field()

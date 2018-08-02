@@ -24,6 +24,9 @@ class MongoPilpeline(object):
     def __init__(self,mongo_url,mongo_db):
         self.mongo_db=mongo_db
         self.mongo_url=mongo_url
+
+
+    # from_crawler 拿到settings的配置参数
     @classmethod
     def from_crawler(cls,crawler):
         return cls(
@@ -37,8 +40,12 @@ class MongoPilpeline(object):
         self.db=self.client[self.mongo_db]
     
     def process_item(self,item,spider):
-        name=self.__class__.__name__
-        self.db[name].insert(dict(item))
+        # 插入操作
+        # name=self.__class__.__name__
+        # self.db[name].insert(dict(item))
+        #更新操作（去重）
+        print(4444444444444444444444444444)
+        self.db['user'].update({'url_token':item['url_token']},{'$set':item},True)
         return item
 
     def close_spider(self,spider):
