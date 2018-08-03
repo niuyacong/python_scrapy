@@ -44,7 +44,7 @@ class MongoPilpeline(object):
         # name=self.__class__.__name__
         # self.db[name].insert(dict(item))
         #更新操作（去重）
-        print(4444444444444444444444444444)
+        print(4444444)
         self.db['user'].update({'url_token':item['url_token']},{'$set':item},True)
         return item
 

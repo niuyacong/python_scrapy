@@ -37,6 +37,10 @@ scarpy
 保存到ftp
 scrapy crawl quotes -o ftp://user:pass@ftp.example.com/path/quotes.csv 
 
+
+
+Tushare是一个免费、开源的python财经数据接口包
+pip install tushare
 """
 import scrapy
 from hello.items import HelloItem
