@@ -22,6 +22,8 @@ MONGO_DB='zhuhu'
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
+
+
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
@@ -69,7 +71,8 @@ DEFAULT_REQUEST_HEADERS = {
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
 #    'hello.pipelines.HelloPipeline': 300,
-   'hello.pipelines.MongoPilpeline': 300
+   'hello.pipelines.MongoPilpeline': 300,
+   'scrapy_redis.pipelines.RedisPipeline': 301 # scrapy-redis
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -93,3 +96,9 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
+# scrapy-redis pip install scrapy_redis
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+SCHEDULER_PERSIST = True
+
+REDIS_URL = 'redis://root:111111@127.0.0.1:6379'
